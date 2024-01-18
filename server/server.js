@@ -12,6 +12,15 @@ app.use(cors());
 
 app.use('/users', userRoutes)
 require('./connection')
+const path=require("path");
+const _dirname=path.dirname("")
+const buildpath=path.join(_dirname,"../client/build")
+app.use(express.static(buildpath));
+app.use(
+  cors({
+    "origin": "*",
+  })
+);
 
 const server = require('http').createServer(app);
 const PORT = 5001;
